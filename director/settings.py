@@ -60,6 +60,7 @@ class Common(Configuration):
         'polymorphic',
         'storages',
         'rest_framework',
+        'rest_auth',
         'django_intercom',
 
         # Our apps
@@ -276,6 +277,16 @@ class Common(Configuration):
     }
 
     STENCILA_BINARY = values.ListValue(['/usr/local/bin/stencila'])
+
+    REST_USE_JWT = True
+
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.BasicAuthentication',
+            'rest_framework.authentication.SessionAuthentication',
+            'rest_framework_jwt.authentication.JSONWebTokenAuthentication'
+        )
+    }
 
 
 class Dev(Common):

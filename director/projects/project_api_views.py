@@ -3,9 +3,12 @@ import json
 from django.core.exceptions import PermissionDenied
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.views import View
+from rest_framework import generics, permissions
 
 from projects.permission_models import ProjectPermissionType
+from projects.project_models import Project
 from projects.project_views import ProjectPermissionsMixin
+from projects.serializers import ProjectSerializer
 
 
 class ProjectDetailView(ProjectPermissionsMixin, View):
@@ -34,3 +37,13 @@ class ProjectDetailView(ProjectPermissionsMixin, View):
         return JsonResponse(
             {'success': True}
         )
+
+
+class ProjectListView(generics.ListAPIView):
+    """List all projects that the logged in user has created."""
+
+    serializer_class = ProjectSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return Project.objects.filter(creator=self.request.user)

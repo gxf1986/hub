@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.defaults import permission_denied, page_not_found
+from rest_framework.documentation import include_docs_urls
 
 import projects.urls
 from accounts.urls import urlpatterns as accounts_patterns
@@ -82,6 +83,8 @@ urlpatterns = [
 
     # API
     path('api/', include(api_patterns)),
+    path('api-docs/', include_docs_urls(title='Stencila Hub REST API', public=False)),
+
 
     path('ie-unsupported/', IeUnsupportedView.as_view(), name='ie-unsupported'),
 
@@ -105,5 +108,5 @@ if settings.DEBUG:
     import debug_toolbar
 
     urlpatterns = [
-        path('debug/', include(debug_toolbar.urls)),
-    ] + urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                      path('debug/', include(debug_toolbar.urls)),
+                  ] + urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
