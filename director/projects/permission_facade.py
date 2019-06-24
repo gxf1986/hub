@@ -2,6 +2,7 @@ import typing
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from accounts.models import Team
@@ -36,7 +37,7 @@ def add_roles_to_permissions_sets(roles_set: typing.Set[ProjectRole],
             permissions_set.add(permission_type)
 
 
-def fetch_project_for_user(user: AbstractUser, project_pk: int) -> ProjectFetchResult:
+def fetch_project_for_user(user: AbstractUser, project_pk: int, raise_permission_exception=False) -> ProjectFetchResult:
     project = get_object_or_404(Project, pk=project_pk)
     user_teams = Team.objects.filter(members=user) if user.is_authenticated else []
 
@@ -46,11 +47,14 @@ def fetch_project_for_user(user: AbstractUser, project_pk: int) -> ProjectFetchR
     permissions: typing.Set[ProjectPermissionType] = set()
 
     if project_agent_roles.count():
+        # since READ is the lowest Role, if they have any Roles they must have Read access
         for project_agent_role in project_agent_roles:
             add_roles_to_permissions_sets(roles, permissions, project_agent_role.role)
     elif project.public:
         read_only_role = ProjectRole.objects.get(name=READ_ONLY_PROJECT_ROLE_NAME)
 
         add_roles_to_permissions_sets(roles, permissions, read_only_role)
+    elif raise_permission_exception:
+        raise PermissionDenied()
 
     return ProjectFetchResult(project, roles, permissions)

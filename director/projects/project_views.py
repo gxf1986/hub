@@ -28,10 +28,10 @@ from projects.permission_models import ProjectPermissionType, ProjectRole, Proje
 from projects.project_archiver import ProjectArchiver
 from projects.project_puller import ProjectSourcePuller
 from projects.source_models import Source, FileSource, LinkedSourceAuthentication
-from projects.source_operations import list_project_virtual_directory, path_entry_iterator, \
-    list_project_filesystem_directory, combine_virtual_and_real_entries, generate_project_archive_directory, \
+from projects.source_operations import path_entry_iterator, \
+    generate_project_archive_directory, \
     path_is_in_directory, utf8_scandir, utf8_isdir, utf8_realpath, utf8_path_join, utf8_path_exists, utf8_unlink, \
-    to_utf8
+    to_utf8, list_project_directory
 from users.views import BetaTokenRequiredMixin
 from .models import Project
 from .project_forms import (
@@ -258,21 +258,17 @@ class ProjectFilesView(ProjectPermissionsMixin, View):
 
         authentication = LinkedSourceAuthentication(user_github_token(request.user))
 
-        path = path or ''
-
         try:
-            virtual_items = list_project_virtual_directory(self.project, path, authentication)
-            on_disk_items = list_project_filesystem_directory(settings.STENCILA_PROJECT_STORAGE_DIRECTORY, self.project,
-                                                              path)
-
-            directory_items = combine_virtual_and_real_entries(virtual_items, on_disk_items)
+            project = self.project
+            project_storage_directory = settings.STENCILA_PROJECT_STORAGE_DIRECTORY
+            directory_items = list_project_directory(project_storage_directory, project, authentication, path)
         except RateLimitExceededException:
             directory_items = []
-            messages.error(request, 'Could not list this directory as it contains Github sources and the anonymous '
-                                    'rate limit has been exceeded.<br/>Please connect your Github account on the '
-                                    '<a href="{}">Account Connections page</a> to remove this limit.'.format(
-                                        reverse('socialaccount_connections')),
-                           extra_tags='safe')
+            rate_limit_error = 'Could not list this directory as it contains Github sources and the anonymous rate ' \
+                               'limit has been exceeded.<br/>Please connect your Github account on the <a href="{}">' \
+                               'Account Connections page</a> to remove this limit.'.format(
+                                    reverse('socialaccount_connections'))
+            messages.error(request, rate_limit_error, extra_tags='safe')
 
         session_check_path = reverse('session_queue_v1', args=(self.project.token,))
         session_start_path = reverse('session_start_v1', args=(self.project.token, DEFAULT_ENVIRON))

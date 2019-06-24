@@ -32,7 +32,7 @@
         {% for project_source in object_list %}
             <tr>
                 <td>{{ project_source.pk }}</td>
-                <td>{{ project_source.type_name }}</td>
+                <td>{{ project_source.provider_name }}</td>
                 <td class="has-text-right">
                     <a href="{{ project_source.get_absolute_url }}">
                                 <span class="icon">

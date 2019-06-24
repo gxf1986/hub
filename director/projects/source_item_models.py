@@ -26,6 +26,9 @@ class DirectoryEntryType(enum.Enum):
 
         return False  # it must be a FILE so after others
 
+    def to_json(self) -> str:
+        return self.name
+
 
 @functools.total_ordering
 class DirectoryListEntry(MimeTypeDetectMixin):
@@ -73,6 +76,15 @@ class DirectoryListEntry(MimeTypeDetectMixin):
     @property
     def allow_remove(self) -> bool:
         return isinstance(self.source, DiskSource)
+
+    def to_json(self) -> dict:
+        return {
+            'name': self.name,
+            'path': self.path,
+            'type': self.type,
+            'source': self.source,
+            'modification_date': self.modification_date
+        }
 
 
 class PathEntry(typing.NamedTuple):

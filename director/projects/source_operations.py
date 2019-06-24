@@ -287,6 +287,14 @@ def combine_virtual_and_real_entries(virtual_files: typing.List[DirectoryListEnt
     return sorted(virtual_files + list(filter(lambda e: name_getter(e) not in virtual_names, real_files)))
 
 
+def list_project_directory(project_storage_directory: str, project: Project, authentication: LinkedSourceAuthentication,
+                           path: typing.Optional[str]):
+    path = path or ''
+    virtual_items = list_project_virtual_directory(project, path, authentication)
+    on_disk_items = list_project_filesystem_directory(project_storage_directory, project, path)
+    return combine_virtual_and_real_entries(virtual_items, on_disk_items)
+
+
 def path_entry_iterator(path: typing.Optional[str] = '') -> typing.Iterable[PathEntry]:
     """
     Iterate each component of the `path` to generate `PathEntry` objects.
