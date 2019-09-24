@@ -258,7 +258,7 @@ class ConverterFacade(object):
 
                 convert_args.append(output_data.as_path_shell_arg + '.json')
 
-            if context.maybe_zip:
+            if context.maybe_zip and False:
                 # If output contains media it will be zipped up
                 convert_args.append('--zip=maybe')
 

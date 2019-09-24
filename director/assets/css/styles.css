@@ -21654,3 +21654,21 @@ h6.has-top-margin {
 .is-brand-tagline:after {
   background: none;
 }
+
+.open-preview {
+  width: 1800px;
+  height: 900px;
+  zoom: 0.6;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.open-preview-link-container {
+  margin-top: -85px;
+}
+
+.is-open-preview {
+  margin-top: -90px;
+}

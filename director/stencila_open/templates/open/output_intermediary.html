@@ -1,0 +1,82 @@
+{% extends 'open/main.html' %}
+{% block main %}
+    <iframe class="open-embed is-hidden" id="article_display_{{ public_id }}" src="{{ raw_source }}"></iframe>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+        <h3 class="title is-3 has-text-centered ">Your Document Is Ready</h3>
+        <h3 class="subtitle is-4 has-text-centered ">View With A Theme</h3>
+        <div class="columns is-open-preview">
+            <div class="column has-text-centered">
+                <iframe class="open-preview" id="iframe_preview_stencila" src="{{ raw_source }}"
+                        scrolling="no"></iframe>
+                <div class="open-preview-link-container">
+                    <a href="#" class="button is-centered" data-index="0">Stencila</a>
+                </div>
+            </div>
+            <div class="column has-text-centered">
+                <iframe class="open-preview" id="iframe_preview_elife" src="{{ raw_source }}" scrolling="no"></iframe>
+                <div class="open-preview-link-container">
+                    <a href="#" class="button is-centered" data-index="1">eLife</a>
+                </div>
+            </div>
+            <div class="column has-text-centered">
+                <iframe class="open-preview" id="iframe_preview_nature" src="{{ raw_source }}" scrolling="no"></iframe>
+                <div class="open-preview-link-container">
+                    <a href="#" class="button is-centered" data-index="2">Nature</a>
+                </div>
+            </div>
+            <div class="column has-text-centered">
+                <iframe class="open-preview" id="iframe_preview_plos" src="{{ raw_source }}" scrolling="no"></iframe>
+                <div class="open-preview-link-container">
+                    <a href="#" class="button is-centered" data-index="3">PLOS</a>
+                </div>
+            </div>
+        </div>
+        <h3 class="subtitle is-4 has-text-centered ">Or Download</h3>
+        <div class="columns" style="padding-bottom: 50px">
+            {% for download_option in download_options %}
+                {% if download_option is None %}
+                {% else %}
+                    <div class="column has-text-centered">
+                        <a href="{{ raw_source }}?download={{ download_option.format_id }}" class="is-block">
+                            <span class="fa-stack fa-4x">
+                              <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                              <i class="{{ download_option.icon_class }} fa-stack-1x"></i>
+                            </span>
+                        </a>
+                        <a href="">{{ download_option.name }}</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block open_scripts %}
+    <script>
+      const themes = ['stencila', 'eLife', 'nature', 'plos']
+
+      for (let themeIndex = 0; themeIndex < themes.length; ++themeIndex) {
+        let theme = themes[themeIndex]
+        let themeEl = document.getElementById('iframe_preview_' + theme.toLowerCase())
+        //debugger
+        //themeEl.src = 'data:text/html;charset=utf-8,' + encodeURI(convertedContent)
+
+        themeEl.addEventListener('load', function () {
+          setIframeTheme(this, theme)
+        })
+      }
+
+      document.querySelectorAll('.open-preview-link-container > a').forEach(function (el) {
+        el.addEventListener('click', function () {
+          const articleDisplay = document.getElementById('article_display_{{ public_id }}')
+          setIframeTheme(articleDisplay, themes[parseInt(this.getAttribute('data-index'))])
+          articleDisplay.classList.remove('is-hidden')
+          window.screenTop = 0
+        })
+      })
+
+      function setIframeTheme (el, themeName) {
+        let themeUrl = `https://unpkg.com/@stencila/thema@1.4.3/dist/themes/${themeName}/styles.css`
+        el.contentDocument.getElementsByTagName('link')[0].setAttribute('href', themeUrl)
+      }
+    </script>
+{% endblock %}
