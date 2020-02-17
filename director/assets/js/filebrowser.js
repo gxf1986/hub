@@ -148,7 +148,8 @@ Vue.component('item-action-menu', {
   },
   data () {
     return {
-      active: false
+      active: false,
+      isDropUp: false
     }
   },
   mounted () {
@@ -209,9 +210,15 @@ Vue.component('item-action-menu', {
     toggle () {
       if (this.active) {
         this.active = false
+        this.isDropUp = false
       } else {
         this.$root.$emit('menu-hide')
         this.active = true
+        const el = this.$el.querySelector('.dropdown-content')
+        setTimeout(() => {
+          const boundingBox = this.$el.querySelector('.dropdown-content').getBoundingClientRect()
+          this.isDropUp = (boundingBox.bottom) > (window.innerHeight || document.documentElement.clientHeight + window.scrollY)
+        }, 0)
       }
     },
     showRenameModal () {
@@ -235,7 +242,7 @@ Vue.component('item-action-menu', {
     }
   },
   template: '' +
-    '<div v-if="shouldDisplay" class="dropdown item-actions-dropdown" @click="toggle()" :class="{ \'is-active\':active }">' +
+    '<div v-if="shouldDisplay" class="dropdown item-actions-dropdown" @click="toggle()" :class="{ \'is-active\':active, \'is-up\': isDropUp }">' +
     '  <div class="dropdown-trigger">' +
     '    <a aria-haspopup="true" :aria-controls="\'item-actions-menu-\' + index"><i class="fa fa-ellipsis-h"></i></a>' +
     '  </div>' +
