@@ -15,7 +15,7 @@
             <div class="navbar-menu" :class="{ 'is-active':active }">
                 <div class="navbar-start is-hidden-mobile">
                 </div>
-                <div class="navbar-end is-flex align-centre">
+                <div class="navbar-end is-flex items-center">
                     {% block navbar_end %}
                         {% if user.is_anonymous %}
                             {% url 'user_signin' as user_signin %}

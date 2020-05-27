@@ -58,7 +58,7 @@
     </head>
 
     <body class="has-navbar-fixed-top has-navbar-fixed-top-touch">
-        <div id="body">
+        {% comment %} <div id="body"> {% endcomment %}
         {% block header %}{% include "_header.html" %}{% endblock %}
         {% block main %}
         <main id="main_section" class="section">
@@ -73,7 +73,7 @@
         </main>
         {% endblock %}
         {% block footer %}{% include "_footer.html" %}{% endblock %}
-        </div>
+        {% comment %} </div> {% endcomment %}
         <script type="text/javascript" src="{% static 'js/hamburger.js' %}" defer></script>
         <script defer>
           feather.replace()

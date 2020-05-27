@@ -1,0 +1,50 @@
+////
+/// Flexbox modifiers
+////
+
+$flex-justify: (("end", "flex-end"), ("centre", "center"), ("start", "flex-start"), ("space-between", "space-between"))
+
+/// Additional flex modifiers
+.flex
+  &-grow
+    flex-grow: 1
+    &-0
+      flex-grow: 0
+  &-shrink
+    flex-shrink: 1
+    &-0
+      flex-shrink: 0
+  &-col
+    flex-direction: column
+  &-row
+    flex-direction: row
+  &-wrap
+    flex-wrap: wrap
+
+  @each $name, $value in $flex-justify
+    &-#{$name}
+      justify-content: $value
+
+.items
+  &-stretch
+    align-items: stretch
+  &-start
+    align-items: flex-start
+  &-center
+    align-items: center
+  &-end
+    align-items: flex-end
+  &-baseline
+    align-items: baseline
+
+.self
+  &-auto
+    align-self: auto
+  &-start
+    align-self: flex-start
+  &-center
+    align-self: center
+  &-end
+    align-self: flex-end
+  &-stretch
+    align-self: stretch

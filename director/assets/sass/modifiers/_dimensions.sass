@@ -1,0 +1,23 @@
+////
+/// Dimension modifiers
+////
+
+/// Widths, Heights & max-heights/widths
+$dimension-units: (("w", "width"), ("h", "height"))
+$dimension-sizes: (("80", 80%), ("full", 100%))
+
+@each $dim-name, $dim-size in $dimension-units
+  @each $name, $size in $dimension-sizes
+    .#{$dim-name}-#{$name},
+    .is-#{$name}-#{$dim-name}
+      #{$dim-size}: $size
+    .max-#{$dim-name}-#{$name}
+      max-#{$dim-size}: $size
+
+.is-fixed-full-width
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  overflow: scroll

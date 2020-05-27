@@ -1,0 +1,30 @@
+////
+/// Border modifiers
+////
+
+.is-borderless
+  border: none
+
+/// Borders for the shades
+@each $name, $pair in $shades
+  $color: nth($pair, 1)
+  .border-top-#{$name}
+      border-top: 1px solid $color
+  .border-right-#{$name}
+      border-right: 1px solid $color
+  .border-bottom-#{$name}
+      border-bottom: 1px solid $color
+  .border-left-#{$name}
+      border-left: 1px solid $color
+
+/// Border modifiers - 1px solid for each color (top, right, bottom, left)
+@each $name, $pair in $colors
+  $color: nth($pair, 1)
+  .border-top-#{$name}
+      border-top: 1px solid $color
+  .border-right-#{$name}
+      border-right: 1px solid $color
+  .border-bottom-#{$name}
+      border-bottom: 1px solid $color
+  .border-left-#{$name}
+      border-left: 1px solid $color

@@ -5,7 +5,7 @@
 {% block project_content %}
   <div class="columns is-centered">
       <div class="column">
-        <div class="job-container job-details-container is-flex flex-direction-column border-top-grey-lighter">
+        <div class="job-container job-details-container is-flex flex-col border-top-grey-lighter">
             {% include "job_list_job.html" with job=job hideActions=True isComplete=job.has_ended %}
         </div>
 

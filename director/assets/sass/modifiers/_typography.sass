@@ -1,0 +1,30 @@
+////
+/// Typographic modifiers
+////
+
+/// Truncate text & show ellipsis.
+.truncate
+  text-overflow: ellipsis
+
+  white-space: nowrap
+  overflow: hidden
+
+.is-size-8
+  font-size: rem(8)
+
+.leading
+  &-1
+    line-height: 1
+  &-1\/16
+    line-height: 1.1667
+  &-1\/45
+    line-height: 1.45
+
+.has-nowrap
+  white-space: nowrap
+
+.hide_text,
+.hide-text
+  font-size: 0
+  line-height: 0
+  text-indent: -10000px

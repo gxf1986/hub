@@ -1,0 +1,10 @@
+////
+/// Layout modifiers - small units of positional/layout specific properties.
+////
+
+.overflow
+  $overflowparams: hidden visible
+
+  @each $p in $overflowparams
+    &-#{$p}
+      overflow: $p

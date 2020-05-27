@@ -4,30 +4,32 @@
 ////
 /// Bulma setup & initial variables.
 ////
-@import '../style/config/_colours.sass'
-@import '../style/config/_variables.sass'
+@import 'config/colours'
 @import 'config/variables'
 @import 'config/mixins'
+
 @import 'bulma/sass/utilities/initial-variables.sass'
 @import 'bulma/sass/utilities/functions.sass'
 @import 'bulma/sass/utilities/derived-variables.sass'
-@import '../style/config/_colour-maps.sass'
+
+@import 'config/colour-maps'
+
 @import 'bulma/bulma.sass'
 
 ////
 /// Style overrides
 ////
-@import '../style/modifiers/_global-modifiers.sass'
-@import '../style/modifiers/_positional.sass'
-@import '../style/mixins/_easing.sass'
-@import '../style/mixins/_global-mixins.sass'
-@import '../style/config/_functions.sass'
+@import 'imports/mixins'
+@import 'imports/modifiers'
+@import 'config/functions'
 
 $stencila-dropdown-font-weight: $weight-light
 
 /// atoms
-@import '../style/imports/_atoms.sass'
 @import 'imports/atoms'
+
+/// components
+@import 'imports/components'
 
 /// Bulma & plugin overrides
 @import 'imports/overrides'
@@ -35,53 +37,50 @@ $stencila-dropdown-font-weight: $weight-light
 /// Forms
 @import 'imports/form'
 
-/// components
-@import '../style/imports/_components.sass'
-
 /// Plugins
 @import 'hamburgers/_sass/hamburgers/hamburgers.scss'
 
 /// Modifiers
-@import 'modifiers/modifiers'
 
 .error-image
   margin-bottom: 1rem
   width: 150px
 
-.has-text-warning
-  color: #FFA800 !important
-// Bulma defines this with !important so we must do that too
-
 $header-height: 78px
 // This is only currently used in iframe size calc, this size might be implicit
 $footer-height: 136px
 
-body, html
-  height: 100%
+// html, body
+//   overflow: auto
 
-#body
-  min-height: 100%
-  position: relative
+body
+  @extend .is-flex
+  @extend .flex-col
+  min-height: 100vh
 
 #main_section
-  padding-top: 51px
+  @extend .flex-grow
+  padding-top: 50px
   padding-bottom: $footer-height
-  height: 100%
 
-  > .container
-    padding-bottom: 35px
+  // + .footer
+  //   margin-top: auto
+//   height: 100%
 
-.footer
-  position: absolute
-  bottom: 0
-  width: 100%
-  padding: 2rem 1.25rem
+//   > .container
+//     padding-bottom: 35px
 
-  .container
-    height: 100%
 
-  .column
-    padding-bottom: 0
+//   // position: absolute
+//   // bottom: 0
+//   // width: 100%
+//   // padding: 2rem 1.25rem
+
+//   // .container
+//   //   height: 100%
+
+//   // .column
+//   //   padding-bottom: 0
 
 .open-landing-form
   .control
@@ -226,11 +225,11 @@ h6.has-top-margin
   height: 70vh
   margin-bottom: 20px
 
-.fade-enter-active, .fade-leave-active
-  transition: opacity .5s
+// .fade-enter-active, .fade-leave-active
+//   transition: opacity .5s
 
-.fade-enter, .fade-leave-to
-  opacity: 0
+// .fade-enter, .fade-leave-to
+//   opacity: 0
 
 .is-uppercase-heading
   +uppercase-heading

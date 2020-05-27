@@ -1,0 +1,62 @@
+/// Margins
+/// -- anyone else hate the lack of multiline statements in .sass?
+$margins: (("auto", auto), ("0", 0), ("1", 4), ("2", 8), ("3", 12), ("4", 16))
+$margins: join($margins, (("5", 20), ("6", 24), ("7", 28), ("8", 32)))
+$margins: join($margins, (("9", 36), ("10", 40), ("11", 44), ("12", 48)))
+$margins: join($margins, (("13", 52), ("14", 56), ("15", 60), ("16", 64)))
+$margins: join($margins, (("17", 68), ("18", 72), ("19", 76), ("20", 80)))
+$margins: join($margins, (("21", 84), ("22", 88), ("23", 92), ("24", 96)))
+
+$containerunits: (("m", "margin"), ("p", "padding"))
+
+// .margin-top-auto
+//     margin-top: auto
+
+// .margin-right-auto
+//     margin-right: auto
+
+// .margin-bottom-auto
+//     margin-bottom: auto
+
+// .margin-left-auto
+//     margin-left: auto
+
+// .no-padding-top
+//     padding-top: 0
+
+// .no-padding-bottom
+//     padding-bottom: 0
+
+// .is-full-width
+//     width: 100%
+
+@function autoSize($size: "auto")
+  @if $size == "auto"
+    @return $size
+  @return rem($size)
+
+@each $name, $size in $margins
+  @each $class, $unit in $containerunits
+    .#{$class}
+      #{$unit}: autoSize($size)
+
+      &-x
+        #{$unit}-left: autoSize($size)
+        #{$unit}-right: autoSize($size)
+
+      &-y
+        #{$unit}-top: autoSize($size)
+        #{$unit}-bottom: autoSize($size)
+
+      &t-#{$name},
+      &top-#{$name}
+        #{$unit}-top: autoSize($size)
+      &r-#{$name},
+      &right-#{$name}
+        #{$unit}-right: autoSize($size)
+      &b-#{$name},
+      &bottom-#{$name}
+        #{$unit}-bottom: autoSize($size)
+      &l-#{$name},
+      &left-#{$name}
+        #{$unit}-left: autoSize($size)

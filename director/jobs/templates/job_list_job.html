@@ -10,7 +10,6 @@
       <i data-feather="{{job.icon}}" class="icon flex-shrink-0"></i>
       <span class="text truncate has-text-weight-bold">{{job.method}}</span>
     </div>
-
   </div>
 
   <div class="job-column job-details flex-grow is-flex flex-col">
@@ -20,9 +19,14 @@
           <span class="job-detail">{% if job.id %}#{{job.id}}{% endif %}</span>
       </span>
 
-      <span class="job-info job-icon job-user is-flex" title="User who created this job">
-          <figure class="user-avatar job-user-image icon overflow-hidden">
-            {% avatar job.creator 16 %}
+      <span class="job-info job-icon is-flex" title="User who created this job">
+          <figure class="user-avatar icon overflow-hidden">
+            {% if job.creator %}
+              {% avatar job.creator 16 %}
+            {% else %}
+              <span class="job-anonymous">A</span>
+            {% endif %}
+
           </figure>
           <span class="job-detail is-uppercase">{% if job.creator %}{{job.creator.username}}{% else %}Anonymous{% endif %}</span>
       </span>
