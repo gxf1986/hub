@@ -8,7 +8,9 @@
 @import 'config/variables'
 @import 'config/mixins'
 
+
 @import 'bulma/sass/utilities/initial-variables.sass'
+$stencila-dropdown-font-weight: $weight-light
 @import 'bulma/sass/utilities/functions.sass'
 @import 'bulma/sass/utilities/derived-variables.sass'
 
@@ -22,8 +24,6 @@
 @import 'imports/mixins'
 @import 'imports/modifiers'
 @import 'config/functions'
-
-$stencila-dropdown-font-weight: $weight-light
 
 /// atoms
 @import 'imports/atoms'
@@ -40,18 +40,6 @@ $stencila-dropdown-font-weight: $weight-light
 /// Plugins
 @import 'hamburgers/_sass/hamburgers/hamburgers.scss'
 
-/// Modifiers
-
-.error-image
-  margin-bottom: 1rem
-  width: 150px
-
-$header-height: 78px
-// This is only currently used in iframe size calc, this size might be implicit
-$footer-height: 136px
-
-// html, body
-//   overflow: auto
 
 body
   @extend .is-flex
@@ -63,218 +51,10 @@ body
   padding-top: 50px
   padding-bottom: $footer-height
 
-.open-landing-form
-  .control
-    input,
-    .button
-      height: 2.75rem
-
-.open-footer
-  padding-top: 0
-
-  img
-    width: 1rem
-    vertical-align: text-bottom
-    margin-right: 4px
-
-  a
-    font-size: 1rem
-    color: rgba(0, 0, 0, 0.5)
-    font-weight: 300
-
-    &::after
-      content: normal
-
-    &:hover
-      color: #333
-
-#file-browser
-  table
-    i
-      color: #7A7A7A
-
-.content-container
-  padding: 10px 0
-
-table.is-item-list
-  td
-    padding: 20px 0
-  a
-    color: #363636
-
-    &:hover
-      color: $primary
-
-.level-list
-  .level
-    padding: 20px 0
-    margin-bottom: 0
-
-    &:not(:last-child)
-      border-bottom: 1px solid #dbdbdb
-
-  a
-    color: #363636
-
-    &:hover
-      color: $primary
-
-    &:not(:last-of-type)
-      .level
-        border-bottom: 1px solid #dbdbdb
-
-  .icon
-    margin-right: 0.5rem
-
-.title.is-underline
-  padding-bottom: 2px
-  border-bottom: 2px solid #dbdbdb
-
-.input,
-.select select
-  border-radius: 0
-
-.select
-  select
-    &.is-borderless-select, &.is-borderless-select:active
-      border: none
-
-.select-align
-  padding-left: 9px
-
-.title-caption
-  text-transform: uppercase
-  color: #7a7a7a !important
-  font-weight: bold
-  line-height: 133%
-  font-size: 12px
-  margin-bottom: 9px
-
-th.title-caption, td.title-caption
-  margin-bottom: auto
-
-td.title-caption
-  vertical-align: middle
-
-.is-transparent
-  color: rgba(0, 0, 0, 0)
-
-.access-row
-  line-height: 36px
-
-  .access-row-icon
-    margin-top: 6px
-
-  .role-col
-    width: 0.1%
-    white-space: nowrap
-
-  .activity-col
-    padding-left: 0
-
-  .role-type-col
-    width: 14px
-    padding-right: 0
-
-a.box:hover .title
-  +transition
-  color: $primary
-
-.switch[type=checkbox]
-  & + label
-    font-size: 14px
-
-  &:checked + label::before
-    background-color: $primary
-
-.field
-  .button
-    height: 2.25rem
-
-p
-  &.has-top-margin
-    margin-top: 24px
-
-  &.has-bottom-margin
-    margin-bottom: 12px
-
-h6.has-top-margin
-  margin-top: 30px
-
-#editor_container
-  width: 100%
-  height: 70vh
-  margin-bottom: 20px
-
-// .fade-enter-active, .fade-leave-active
-//   transition: opacity .5s
-
-// .fade-enter, .fade-leave-to
-//   opacity: 0
-
-.is-uppercase-heading
-  +uppercase-heading
-
-.heading-circle
-  background-color: rgba(0, 0, 0, 0.1)
-  width: 1.5rem
-  display: inline-block
-  line-height: 1.5rem
-  text-align: center
-  border-radius: 100%
-  height: 1.5rem
-  margin-bottom: 1rem
-  margin-right: .5rem
-
 #informat-example
   background-color: rgba($success, .16)
   padding: 2px 4px
 
-.open-examples-header
-  margin-bottom: 1rem
-
-.open-feature-list
-  .columns
-    margin-top: 1.5rem
-    padding-top: 1.5rem
-
-.open-embed
-  width: 100%
-  height: calc(100vh - #{$footer-height + $header-height})
-  margin-bottom: 128px
-
-  &-preview
-    height: calc(30vh)
-    margin-bottom: 1rem
-    margin-top: 0
-    border: solid 1px #dbdbdb
-
-.open-footer
-  background-color: transparent
-  color: black
-  z-index: 6
-
-.conversions-footer
-  background-color: transparent
-  position: fixed
-  bottom: -4px
-  z-index: 5
-  height: auto
-  padding-right: 6em
-
-  +until($desktop)
-    position: absolute
-    bottom: 30px
-    padding-right: 1.25rem
-
-  +until(430px)
-    bottom: 64px
-
-  .button.is-borderless
-    background-color: transparent
-
-    .is-borderless-text
-      text-decoration: underline
 
 .modal-card-title
   i
@@ -327,16 +107,6 @@ $share-width: 450px
   div
     width: 50%
     text-align: center
-
-#open-navbar
-  z-index: 0
-  height: 0
-
-  &.is-active
-    height: auto
-
-.stacked-item
-  margin-bottom: 20px
 
 
 iframe.published-display

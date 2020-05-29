@@ -705,7 +705,7 @@ Vue.component('publish-modal', {
     '      <button class="delete" aria-label="close" @click="hide()"></button>' +
     '    </header>' +
     '    <section class="modal-card-body">' +
-    '      <div class="content-container">' +
+    '      <div class="py-3 content-container">' +
     '        <p>' +
     '          File <em>{{ sourceName }}</em> will be converted to HTML and published for this project.' +
     '        </p>' +
@@ -1227,7 +1227,7 @@ Vue.component('snapshot-modal', {
     '      </p>' +
     '    </section>' +
     '    <section class="modal-card-body" v-if="snapshotComplete">' +
-    '       <span class="icon is-success"><i class="fas fa-check" aria-hidden="true"></span> Snapshot ' + 
+    '       <span class="icon is-success"><i class="fas fa-check" aria-hidden="true"></span> Snapshot ' +
             '<a :href=snapshotUrl>#{{ snapshotNumber }}</a> ' +
             'complete.' +
     '    </section>' +

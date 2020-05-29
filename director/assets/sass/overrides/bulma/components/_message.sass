@@ -1,0 +1,42 @@
+////
+/// Overrides for Bulma message component
+////
+.message
+  background-color: $message-body-header-bg !important
+
+  &.is-danger
+    border-color: $danger
+
+  &.is-warning
+    border-color: $warning
+
+  &.is-info
+    border-color: $info
+
+  &.is-info,
+  &.is-danger
+    .message-header
+      color: rgba(0, 0, 0, 0.7)
+
+  &-header
+    +uppercase-heading()
+    padding: $message-header-padding
+    background-color: #fafafa !important
+
+  &-header-body
+    @each $name, $components in $message-colors
+      $color: nth($components, 1)
+
+      &.is-#{$name}
+        .message-header
+          border-color: $color
+
+    .message-header
+      border-color: $message-body-border-color
+      border-radius: $message-body-radius 0 0 0
+
+    .message-header,
+    .message-body
+      border-style: solid
+      border-width: $message-body-border-width
+      color: $message-body-color !important

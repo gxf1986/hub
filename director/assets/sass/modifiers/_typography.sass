@@ -9,6 +9,23 @@
   white-space: nowrap
   overflow: hidden
 
+.has-nowrap
+  white-space: nowrap
+
+.hide_text,
+.hide-text
+  font-size: 0
+  line-height: 0
+  text-indent: -10000px
+
+.is-uppercase-heading
+  +uppercase-heading
+
+.is-underline
+  padding-bottom: 2px
+  border-bottom: 2px solid #dbdbdb
+
+/// Sizing
 .is-size-8
   font-size: rem(8)
 
@@ -19,12 +36,3 @@
     line-height: 1.1667
   &-1\/45
     line-height: 1.45
-
-.has-nowrap
-  white-space: nowrap
-
-.hide_text,
-.hide-text
-  font-size: 0
-  line-height: 0
-  text-indent: -10000px

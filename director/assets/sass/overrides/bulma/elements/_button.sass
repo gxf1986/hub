@@ -1,0 +1,102 @@
+////
+/// Overrides for Bulma button
+////
+
+/// Variables to override
+$button-padding-vertical: calc(0.375em - #{$button-border-width}) !default
+$button-padding-horizontal: 0.75em !default
+$button-mini-font-size: rem(12) !default
+$button-mini-padding: rem(14) rem(20) !default
+$button-square-width: 28 !default
+$button-square-height: 28 !default
+$button-square-icon-size: 12 !default
+
+.button
+  +transition
+
+  border-radius: $button-radius
+  height: 2.75em
+  padding: $button-padding-vertical $button-padding-horizontal
+
+  @each $name, $pair in $colors
+    $color: nth($pair, 1)
+    &.has-text-hover-#{$name}
+      &:hover
+        color: $color !important
+
+  .icon
+    margin-left: 0
+    margin-right: 0
+
+  &:hover
+    &:not(.btn-primary),
+    &:not(.btn-primary[disabled])
+      color: $dark
+
+  &.is-round
+    border-radius: 50%
+
+  &.is-toolbar
+    border-radius: 50%
+    background-color: $white
+    border-color: rgba($dark, .1)
+    font-weight: $weight-bold
+    font-size: rem(16)
+    display: inline-block
+    position: relative
+    width: rem(32)
+    height: rem(32)
+
+    transition: background-color $normal-speed, color $normal-speed, border-color $normal-speed
+
+    span
+      +center-align
+
+    sub,
+    sup
+      font-size: rem(10)
+
+    .icon,
+    .icon:first-child:last-child
+      margin-left: 0
+      margin-right: 0
+
+  &.is-plain
+    background: unset
+    border: none
+    height: auto
+    width: auto
+    padding: 0
+    line-height: 1em
+
+  /// Small variation of a button
+  &.is-mini
+    font-size: $button-mini-font-size
+    padding: $button-mini-padding
+
+  /// Same size as a select (not nuliple) item.
+  &.is-select
+    &.is-normal
+      height: rem(36)
+
+  /// Square version of a button
+  /// - should be used with an icon inside the button
+  &.is-square
+    +transition($attr: border-radius)
+
+    height: rem($button-square-height)
+    width: rem($button-square-width)
+    padding-left: 0
+    padding-right: 0
+    font-size: 0
+    line-height: 0
+
+    &.is-rounded
+      border-radius: 50%
+
+    .icon
+      font-size: rem($button-square-icon-size)
+      line-height: 1em
+      width: 1em
+      height: 1em
+

@@ -75,6 +75,7 @@ show-serializers:
 
 # Run development server
 run: venv
+	(cd ../; npm i; npm run start &)
 	$(DJ) runserver
 
 # Run development server with production settings

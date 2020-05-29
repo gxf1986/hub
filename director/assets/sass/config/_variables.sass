@@ -2,6 +2,12 @@
 /// Variables - overrides & additions.
 ////
 
+/// Possibly @deprecated - these 2 vars could be deprecated (used to calculate
+/// header & footer heights for iframes ... I think?)
+$header-height: 78px
+// This is only currently used in iframe size calc, this size might be implicit
+$footer-height: 136px
+
 /// Colours
 $link: rgba(0, 0, 0, 0.5)
 $link-hover: $dark
@@ -33,9 +39,13 @@ $button-border-width: 1px
 $button-padding-horizontal: 1em
 $button-radius: $radius-small
 
+/// Content
+$content-blockquote-background-color: $light
+$content-blockquote-border-left: 5px solid $primary
+
 /// Footer
 $footer-background-color: $primary
-$footer-padding: 40px 24px !important
+$footer-padding: 40px 24px
 
 // ~TODO: revisit if hamburger still necessary
 /// Hamburger
@@ -57,10 +67,13 @@ $message-header-radius: 2px
 $message-body-radius: 2px
 
 $message-header-color: rgba(0, 0, 0, 0.7)
+$message-header-padding: 1rem 1.5rem .75rem
 $message-body-color: #3b3108
 $message-body-header-bg: #FAFAFA
+$message-body-padding: 0 1.5rem 1rem
 
 /// Modal
+$modal-background-background-color: rgba($boulder, .9)
 $modal-card-foot-radius: $radius-small
 $modal-card-head-radius: $radius-small
 $modal-card-head-background-color: $white
@@ -74,7 +87,7 @@ $navbar-item-hover-background-color: $white
 
 /// Panel
 $panel-block-active-border-left-color: $primary
-$panel-block-active-bg-color: transparent
+$panel-block-active-background-color: transparent
 
 /// Section
-$section-padding: (90/16)+rem (20/16)+rem
+$section-padding: rem(90) rem(20)

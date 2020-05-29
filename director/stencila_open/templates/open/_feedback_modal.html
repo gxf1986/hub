@@ -12,7 +12,7 @@
         <section class="modal-card-body">
             <div v-show="!submitted">
                 <h5 class="subtitle is-5 is-marginless">1. How satisfied are you with the converted document?</h5>
-                <p class="has-bottom-margin">On a scale of 1-5, 1 being very dissatisfied, 5 being very satisfied.</p>
+                <p class="mb-3">On a scale of 1-5, 1 being very dissatisfied, 5 being very satisfied.</p>
                 <div class="columns feedback-rating">
                     <div class="column has-text-centered" :class="{selected: rating === 1}" @click="setRating(1)">
                         <span class="icon is-large">
@@ -52,9 +52,9 @@
                         <p>very satisfied</p>
                     </div>
                 </div>
-                <p v-if="ratingErrors !== null" class="has-text-danger has-bottom-margin">[[ ratingErrors.join(' ') ]]</p>
+                <p v-if="ratingErrors !== null" class="has-text-danger mb-3">[[ ratingErrors.join(' ') ]]</p>
                 <h5 class="subtitle is-5 is-marginless">2. Any comments or suggestions for improvements?</h5>
-                <p class="has-bottom-margin">
+                <p class="mb-3">
                     How useful did you find <em>/open</em>? Is there anything you&rsquo;d like us to add or remove to
                     make
                     it perfect for you?
@@ -64,8 +64,8 @@
                         <textarea class="textarea" placeholder="I love it!" v-model="comments"></textarea>
                     </div>
                 </div>
-                <h5 class="subtitle is-5 has-bottom-margin">3. Email address (optional)</h5>
-                <p class="has-bottom-margin">
+                <h5 class="subtitle is-5 mb-3">3. Email address (optional)</h5>
+                <p class="mb-3">
                     Enter your email address if you would like to be contacted regarding your experience.
                 </p>
                 <div class="field">

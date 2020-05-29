@@ -146,7 +146,7 @@
             <b-tabs v-model="paymentTab">
                 {% if plan.product.extension.is_purchasable %}
                     <b-tab-item label="Credit Card">
-                        <p class="has-bottom-margin">
+                        <p class="mb-3">
                             <strong>Subscribe using your Credit Card for monthly recurring billing.</strong>
                         </p>
                         <div id="stripe-card-element">
@@ -159,7 +159,7 @@
                     </b-tab-item>
                 {% endif %}
                 <b-tab-item label="Coupon">
-                    <p class="has-bottom-margin">
+                    <p class="mb-3">
                         <strong>Subscribe to an Plan using a coupon code.</strong>
                     </p>
                     <div class="field">
@@ -180,13 +180,13 @@
         <div class="stacked-item">
             <h4 class="title is-4">3. Subscribe</h4>
             <div v-if="isCreditCardTab">
-                <p class="has-bottom-margin">Your credit card will be charged <strong>${{ plan.amount }}</strong> every
+                <p class="mb-3">Your credit card will be charged <strong>${{ plan.amount }}</strong> every
                     <strong>{{ plan.interval }}</strong>.
                 </p>
                 <button class="button is-primary" id="stripe-submit">Subscribe</button>
             </div>
             <div v-if="!isCreditCardTab">
-                <p class="has-bottom-margin">
+                <p class="mb-3">
                     Your subscription is paid for by your coupon.
                 </p>
                 <button class="button is-primary" :class="{'is-loading': submitInProgress}" :disabled="submitInProgress"
@@ -194,7 +194,7 @@
                 </button>
             </div>
             <div v-if="signupError !== ''">
-                <p class="has-text-danger has-top-margin">
+                <p class="has-text-danger mt-5">
                     Error during subscription: [[ signupError ]]
                 </p>
             </div>

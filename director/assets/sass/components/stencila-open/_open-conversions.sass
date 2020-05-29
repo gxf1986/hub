@@ -1,0 +1,21 @@
+.conversions-footer
+  background-color: transparent
+  position: fixed
+  bottom: -4px
+  z-index: 5
+  height: auto
+  padding-right: 6em
+
+  +until($desktop)
+    position: absolute
+    bottom: 30px
+    padding-right: 1.25rem
+
+  +until(430px)
+    bottom: 64px
+
+  .button.is-borderless
+    background-color: transparent
+
+    .is-borderless-text
+      text-decoration: underline

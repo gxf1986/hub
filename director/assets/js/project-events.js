@@ -116,7 +116,7 @@ Vue.component('event-detail-modal', {
     '  </header>' +
     '  <section class="modal-card-body">' +
     '    <h5 class="title is-5">Message</h5>' +
-    '    <p class="has-bottom-margin">{{ event.message }}</p>' +
+    '    <p class="mb-3">{{ event.message }}</p>' +
     '    <h5 v-if="log.length" class="title is-5">Log Messages</h5>' +
     '    <event-log-message :key="index" v-for="(message, index) in log" :message="message"></event-log-message>' +
     '  </section>' +

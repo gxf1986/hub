@@ -4,15 +4,21 @@
 
 /// Widths, Heights & max-heights/widths
 $dimension-units: (("w", "width"), ("h", "height"))
-$dimension-sizes: (("80", 80%), ("full", 100%))
+$dimension-new-sizes: (("0", 0), ("1", rem(4)), ("2", rem(8)), ("3", rem(12)), ("4", rem(16)))
+$dimension-new-sizes: join($dimension-new-sizes, (("5", rem(20)), ("6", rem(24)), ("7", rem(28)), ("8", rem(32))))
+$dimension-new-sizes: join($dimension-new-sizes, (("9", rem(36)), ("10", rem(40)), ("11", rem(44)), ("12", rem(48))))
+$dimension-new-sizes: join($dimension-new-sizes, (("13", rem(52)), ("14", rem(56)), ("15", rem(60)), ("16", rem(64))))
+$dimension-new-sizes: join($dimension-new-sizes, (("17", rem(68)), ("18", rem(72)), ("19", rem(76)), ("20", rem(80))))
+$dimension-new-sizes: join($dimension-new-sizes, (("21", rem(84)), ("22", rem(88)), ("23", rem(92)), ("24", rem(96))))
+$dimension-sizes: join($dimension-new-sizes, (("80", 80%), ("full", 100%)))
 
 @each $dim-name, $dim-size in $dimension-units
   @each $name, $size in $dimension-sizes
     .#{$dim-name}-#{$name},
     .is-#{$name}-#{$dim-name}
-      #{$dim-size}: $size
+      #{$dim-size}: $size !important
     .max-#{$dim-name}-#{$name}
-      max-#{$dim-size}: $size
+      max-#{$dim-size}: $size !important
 
 .is-fixed-full-width
   position: fixed

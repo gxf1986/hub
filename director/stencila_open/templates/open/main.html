@@ -4,7 +4,6 @@
 {% block title %}Open{% endblock %}
 {% block header %}{% include "open/open_header.html" with navbar_id='navbar_open' display_share=user_owns_conversion %}{% endblock %}
 {% block content %}
-
     <section class="section">
         <div class="columns">
             <div class="column is-8 is-offset-2">
@@ -15,13 +14,13 @@
                 <h2 class="subtitle is-5 has-text-centered">
                   Need to share your <span id="informat-example">Jupyter Notebook</span> with your supervisor<br /> as a Word document for&nbsp;sign&#8209;off?&nbsp;Easy&nbsp;peasy.
                 </h2>
-                
+
             </div>
         </div>
 
         <div class="columns is-vcentered">
             <div class="column is-4 is-offset-1">
-                <form method="post" class="open-landing-form">
+                <form method="post">
                     {% csrf_token %}
                     <label for="{{ url_form.url.auto_id }}" class="label">
                         Enter a file URL
@@ -37,7 +36,7 @@
                     <div class="field is-grouped is-marginless">
                         <p class="control is-expanded">
                             <input type="text"
-                                   class="input{% if url_form.url.errors %} is-danger{% endif %}"
+                                   class="input h-full{% if url_form.url.errors %} is-danger{% endif %}"
                                    placeholder="https://"
                                    name="{{ url_form.url.name }}"
                                    id="{{ url_form.url.auto_id }}"
@@ -46,7 +45,7 @@
                             >
                         </p>
                         <p class="control">
-                            <input class="button is-primary" type="submit" value="Open">
+                            <input class="button is-primary h-11" type="submit" value="Open">
                         </p>
                     </div>
                     {% comment %}
@@ -79,7 +78,7 @@
                             </div>
                         </span>
                         <div class="tooltip is-hidden-tablet">
-                            <p class="is-uppercase-heading has-bottom-margin">Supported sites and formats</p>
+                            <p class="is-uppercase-heading mb-3">Supported sites and formats</p>
                             <p>For these sites you can just copy and paste the URL from the document you are viewing or editing on the site.</p>
                             <br>
                             <p><strong>Github</strong></p>
@@ -147,7 +146,7 @@
                     <div class="has-text-centered"><a href="javascript:void(0)" class="help tooltip-link">What types of files can I upload?
                         <span class="tooltip-q">?
                             <div class="tooltip is-hidden-mobile">
-                                <p class="is-uppercase-heading has-bottom-margin">Supported file formats</p>
+                                <p class="is-uppercase-heading mb-3">Supported file formats</p>
                                 <p><strong>Markdown:</strong> .md</p>
                                 <p><strong>Jupyter Notebook:</strong> .ipynb</p>
                                 <p><strong>R Markdown:</strong> .rmd</p>
@@ -157,7 +156,7 @@
                             </div>
                         </span>
                         <div class="tooltip is-hidden-tablet">
-                            <p class="is-uppercase-heading has-bottom-margin">Supported file formats</p>
+                            <p class="is-uppercase-heading mb-3">Supported file formats</p>
                             <p><strong>Markdown:</strong> .md</p>
                             <p><strong>Jupyter Notebook:</strong> .ipynb</p>
                             <p><strong>R Markdown:</strong> .rmd</p>
@@ -179,12 +178,12 @@
                     <div class="has-text-centered"><a href="javascript:void(0)" class="help tooltip-link">How is my data used?
                         <span class="tooltip-q">?
                             <div class="tooltip is-hidden-mobile">
-                                <p class="is-uppercase-heading has-bottom-margin">How is my data used?</p>
+                                <p class="is-uppercase-heading mb-3">How is my data used?</p>
                                 <p>We retain copies of file uploads for 24 hours before they are removed from our servers. Files are only used for testing purposes by Stencila (e.g. debugging and recreating error reports submitted with associated files), or for automatic addition to your Stencila Hub account. Uploaded source files are not shared with any third parties. The converted output in HTML format is retained on our servers, and you can request that this output is removed at any time.</p>
                             </div>
                         </span>
                         <div class="tooltip is-hidden-tablet">
-                            <p class="is-uppercase-heading has-bottom-margin">How is my data used?</p>
+                            <p class="is-uppercase-heading mb-3">How is my data used?</p>
                             <p>We retain copies of file uploads for 24 hours before they are removed from our servers. Files are only used for testing purposes by Stencila (e.g. debugging and recreating error reports submitted with associated files), or for automatic addition to your Stencila Hub account. Uploaded source files are not shared with any third parties. The converted output in HTML format is retained on our servers, and you can request that this output is removed at any time.</p>
                         </div>
                     </a>
