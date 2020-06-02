@@ -1,0 +1,22 @@
+////
+/// Typographic element mixins
+////
+
+=uppercase-heading($heading-font-size: 14px)
+    font-family: $family-secondary
+    text-transform: uppercase
+    letter-spacing: 1.2px
+    font-size: $heading-font-size
+
+////
+/// Generate list styles
+////
+=generate-list-styles($padding-left: 20)
+    $list-styles: disc, circle
+
+    @each $style in $list-styles
+        ul.list-style--#{$style}
+            list-style: #{$style}
+            padding-left: rem($padding-left)
+
+@include generate-list-styles

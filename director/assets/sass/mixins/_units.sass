@@ -1,0 +1,10 @@
+$base-font-size: 16px !default
+
+@function rem($size: $base-font-size)
+    @return (strip-units($size)/strip-units($base-font-size))+rem
+
+@function em($size: $font_size, $target: $base-font-size)
+    @return (strip-units($size)/strip-units($target))+em
+
+@function strip-units($value)
+    @return $value / ($value * 0 + 1)

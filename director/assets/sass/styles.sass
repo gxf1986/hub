@@ -3,14 +3,17 @@
 
 ////
 /// Bulma setup & initial variables.
+/// - the order is important (many vars are default & get overridden by
+/// proceeding files).
 ////
 @import 'config/colours'
 @import 'config/variables'
-@import 'config/mixins'
-
+@import 'config/functions'
 
 @import 'bulma/sass/utilities/initial-variables.sass'
-$stencila-dropdown-font-weight: $weight-light
+
+@import 'config/initial-variables'
+
 @import 'bulma/sass/utilities/functions.sass'
 @import 'bulma/sass/utilities/derived-variables.sass'
 
@@ -23,7 +26,7 @@ $stencila-dropdown-font-weight: $weight-light
 ////
 @import 'imports/mixins'
 @import 'imports/modifiers'
-@import 'config/functions'
+@import 'imports/sprites'
 
 /// atoms
 @import 'imports/atoms'
@@ -40,91 +43,7 @@ $stencila-dropdown-font-weight: $weight-light
 /// Plugins
 @import 'hamburgers/_sass/hamburgers/hamburgers.scss'
 
-
 body
   @extend .is-flex
   @extend .flex-col
   min-height: 100vh
-
-#main_section
-  @extend .flex-grow
-  padding-top: 50px
-  padding-bottom: $footer-height
-
-#informat-example
-  background-color: rgba($success, .16)
-  padding: 2px 4px
-
-
-.modal-card-title
-  i
-    font-size: 1.5rem
-
-$share-offset: 80px
-$share-width: 450px
-
-#share_dropdown
-  .dropdown-content
-    width: $share-width
-    padding: 20px
-    left: -$share-offset
-
-    &:before
-      left: ($share-width / 2) + $share-offset
-
-
-.feedback-rating
-  .column
-    cursor: pointer
-
-    h6
-      padding-top: 10px
-
-    p
-      font-style: italic
-      font-size: 80%
-
-  .column.selected
-    .icon
-      color: #2468EF
-
-
-.is-brand-tagline
-  &:after
-    background: none
-
-#loading-mask
-  top: 0
-  z-index: 10000
-  position: fixed
-  height: 100%
-  width: 100%
-  background-color: rgba(255, 255, 255, 0.7)
-  display: flex
-  align-items: center
-  justify-content: center
-
-  div
-    width: 50%
-    text-align: center
-
-
-iframe.published-display
-  width: 100%
-  height: 100%
-
-.company-logo
-  width: 18px
-  height: 18px
-  display: inline-block
-  background-size: contain
-  &.logo-elife
-    background-image: url("../img/elife-logo.png")
-  &.logo-plos
-    background-image: url("../img/plos-logo.png")
-
-.item-actions-dropdown
-  .grouping-header
-    text-align: left
-  .indent
-    padding-left: 40px

@@ -8,17 +8,14 @@ $header-height: 78px
 // This is only currently used in iframe size calc, this size might be implicit
 $footer-height: 136px
 
-/// Colours
-$link: rgba(0, 0, 0, 0.5)
-$link-hover: $dark
-$danger: #FF345D
-
 /// Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Montserrat:600&display=swap')
 $family-sans-serif: 'Lato', sans-serif
 $family-monospace: monospace
 $family-primary: $family-sans-serif
 $family-secondary: 'Montserrat', sans-serif
+
+$base-font-size: 16px
 
 $weight-bold: 700
 $weight-heavy: 700
@@ -79,15 +76,21 @@ $modal-card-head-radius: $radius-small
 $modal-card-head-background-color: $white
 
 /// Navbar
-$navbar-height: 4.5625rem
 $navbar-item-img-max-height: 100%
 $navbar-item-hover-color: $primary
-$navbar-item-active-color: $primary
 $navbar-item-hover-background-color: $white
+$navbar-item-active-color: $primary
+$navbar-height: 4.5625rem
+$navbar-dropdown-item-hover-color: $white
+$navbar-dropdown-item-hover-background-color: #2568ef
+$navbar-dropdown-item-color: $white
+$navbar-dropdown-item-active-color: $white
+$navbar-dropdown-background-color: $primary
+
 
 /// Panel
 $panel-block-active-border-left-color: $primary
 $panel-block-active-background-color: transparent
 
 /// Section
-$section-padding: rem(90) rem(20)
+$section-padding: 90px 20px

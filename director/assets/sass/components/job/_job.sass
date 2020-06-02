@@ -5,7 +5,10 @@
   @extend .is-flex
   @extend .border-bottom-grey-lighter
 
-  cursor: pointer
+  @import 'filter'
+  @import 'footer'
+  @import 'messages'
+
   flex-direction: row
   padding: rem(24) rem(16)
   margin: 0
@@ -16,13 +19,6 @@
   &.is-active,
   &:hover
     @extend .has-background-white-ter
-
-
-  /// Filter heading element
-  &-filter
-    max-width: 80%
-    +until($desktop)
-     max-width: 100%
 
   /// Job icons - used in various places, allows for simply dumping an icon
   /// without having to supply separate classes.
@@ -138,24 +134,11 @@
 
   /// Details header - displayed in center column
   &-details
+    &-container
+      .job
+        &:hover
+          @extend .has-background-white
     &-header
       /// Accounts for the difference between this column and the job-summary
       /// column
       margin-top: rem(-3)
-
-  /// Footer - displays pagination etc.
-  &-footer
-    margin-top: rem(48)
-    @extend .mb-6
-
-    .level-left + .level-right
-      @extend .mt-0
-
-    +desktop
-      margin-top: rem(96)
-
-  /// Job details - as seen on the details page
-  &-details
-    &-messages
-      .header
-        margin-bottom: rem(24)

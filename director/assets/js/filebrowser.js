@@ -187,7 +187,7 @@ Vue.component('item-action-menu', {
     '  <div class="dropdown-trigger">' +
     '    <a aria-haspopup="true" :aria-controls="\'item-actions-menu-\' + index"><i class="fa fa-ellipsis-h"></i></a>' +
     '  </div>' +
-    '  <div class="dropdown-menu" id="\'item-actions-menu-\' + index" role="menu">' +
+    '  <div class="dropdown-menu" :id="\'item-actions-menu-\' + index" role="menu">' +
     '    <div class="dropdown-content">' +
     '      <a :href="editorUrl" target="_blank" rel="noopener" class="dropdown-item"><span class="icon"><i class="fas fa-external-link-alt"></i></span>Open</a>' +
     '      <hr v-if="shouldDisplayOpenConvertDivider" class="dropdown-divider">' +

@@ -15,7 +15,8 @@ $dimension-sizes: join($dimension-new-sizes, (("80", 80%), ("full", 100%)))
 @each $dim-name, $dim-size in $dimension-units
   @each $name, $size in $dimension-sizes
     .#{$dim-name}-#{$name},
-    .is-#{$name}-#{$dim-name}
+    .is-#{$name}-#{$dim-name},
+    .is-#{$name}-#{$dim-size},
       #{$dim-size}: $size !important
     .max-#{$dim-name}-#{$name}
       max-#{$dim-size}: $size !important

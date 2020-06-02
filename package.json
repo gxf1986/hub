@@ -8,8 +8,9 @@
   ],
   "scripts": {
     "prepare": "node prepare.js",
-    "build": "gulp build",
-    "start": "gulp"
+    "build": "NODE_ENV=production gulp build",
+    "start": "gulp",
+    "sprite": "gulp sprite"
   },
   "dependencies": {
     "@stencila/thema": "2.10.1",
@@ -19,9 +20,14 @@
   "devDependencies": {
     "@semantic-release/exec": "5.0.0",
     "@stencila/dev-config": "1.4.39",
+    "cssnano": "^4.1.10",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "7.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-purgecss": "^2.2.0",
     "gulp-sass": "4.1.0",
+    "gulp.spritesmith": "^6.11.0",
+    "merge-stream": "^2.0.0",
     "node-sass": "4.14.1",
     "sass-module-importer": "1.4.0"
   },

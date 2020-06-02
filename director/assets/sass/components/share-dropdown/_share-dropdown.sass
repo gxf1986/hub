@@ -1,0 +1,13 @@
+$share-offset: 80px !default
+$share-width: 450px !default
+
+#share_dropdown
+  margin-right: em(8)
+
+  .dropdown-content
+    width: $share-width
+    padding: rem(20)
+    left: -$share-offset
+
+    &:before
+      left: rem(($share-width / 2) + $share-offset)
